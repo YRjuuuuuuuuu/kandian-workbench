@@ -19,8 +19,8 @@ PYTHON_VERSION = "3.14.10"
 PYTHON_URL = f"https://www.python.org/ftp/python/{PYTHON_VERSION}/python-{PYTHON_VERSION}-embed-amd64.zip"
 PYTHON_SHA256 = "90905e64a840557d8c1bc4f5b74db3d7ee85e3ffb217611cac1c7813acea4159"
 DIRECTORIES = ("components", "content_engine", "modes", "prompts", "skills", "web")
-FILES = ("启动工作台.cmd", "停止工作台.cmd", "LICENSE")
-SCRIPTS = ("workbench_control.py", "python_runtime.ps1")
+FILES = ("启动工作台.cmd", "停止工作台.cmd", "LICENSE", "THIRD_PARTY_NOTICES.md")
+SCRIPTS = ("workbench_control.py", "python_runtime.ps1", "standalone-requirements.txt", "hotlist-requirements.txt")
 CACHE = ROOT / "tools" / "standalone-build"
 
 
@@ -64,7 +64,7 @@ def build_media_runtime(app):
     installed = ROOT / "runtime" / "hotlists"
     if (reusable["browser_ready"] and (installed / "dependencies.txt").is_file()
             and (installed / "dependencies.txt").read_bytes() == requirements.read_bytes()):
-        shutil.copytree(installed, media, ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.log"))
+        shutil.copytree(installed, media, ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.log", "ffmpeg-*", "winldd-*"))
     else:
         dependencies = media / "dependencies"
         install_wheels(dependencies, requirements)
@@ -80,7 +80,7 @@ def build_media_runtime(app):
         browsers = media / "browsers"
         browsers.mkdir()
         for path in cache.iterdir():
-            if path.is_dir() and path.name.startswith(("chromium_headless_shell-", "ffmpeg-", "winldd-")):
+            if path.is_dir() and path.name.startswith("chromium_headless_shell-"):
                 shutil.copytree(path, browsers / path.name, ignore=shutil.ignore_patterns("*.log"))
     status = bundled_media_status(app)
     if not status["browser_ready"]:
