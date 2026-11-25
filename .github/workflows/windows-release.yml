@@ -1,6 +1,8 @@
 name: Build Windows release
 
 on:
+  push:
+    branches: ["release/windows/v*"]
   workflow_dispatch:
     inputs:
       tag:
@@ -12,7 +14,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: windows-release-${{ inputs.tag }}
+  group: windows-release
 
 jobs:
   build:
@@ -22,14 +24,18 @@ jobs:
       contents: write
     env:
       PYTHONUTF8: "1"
-      RELEASE_TAG: ${{ inputs.tag }}
+      RELEASE_REF: ${{ inputs.tag || github.ref_name }}
     steps:
       - name: Check version tag
+        id: version
         run: |
-          if ($env:RELEASE_TAG -notmatch '^v\d+\.\d+\.\d+$') { throw 'Expected a release version tag' }
+          $tag = $env:RELEASE_REF -replace '^release/windows/', ''
+          if ($tag -notmatch '^v\d+\.\d+\.\d+$') { throw 'Expected a release version tag' }
+          "tag=$tag" >> $env:GITHUB_OUTPUT
+          "RELEASE_TAG=$tag" >> $env:GITHUB_ENV
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          ref: refs/tags/${{ inputs.tag }}
+          ref: refs/tags/${{ steps.version.outputs.tag }}
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
@@ -42,7 +48,7 @@ jobs:
           New-Item -ItemType Directory -Force data | Out-Null
           $version = $env:RELEASE_TAG.Substring(1)
           python -X utf8 scripts/accept_standalone.py "dist/kandian-workbench-$version-windows-x64.zip" --port 8771
-      - name: Attach verified files to the draft
+      - name: Attach files and publish the verified release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -51,3 +57,16 @@ jobs:
           $version = $env:RELEASE_TAG.Substring(1)
           $asset = "dist/kandian-workbench-$version-windows-x64"
           gh release upload $env:RELEASE_TAG "$asset.zip" "$asset.sha256" --clobber
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $releases = gh api "repos/$env:GITHUB_REPOSITORY/releases?per_page=100" | ConvertFrom-Json
+          $release = $releases | Where-Object { $_.tag_name -eq $env:RELEASE_TAG -and $_.draft }
+          if (-not $release) { throw 'Draft release disappeared' }
+          foreach ($path in @("$asset.zip", "$asset.sha256")) {
+            $name = Split-Path $path -Leaf
+            $uploaded = $release.assets | Where-Object { $_.name -eq $name }
+            $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $path).Hash.ToLowerInvariant()
+            if ($uploaded.state -ne 'uploaded' -or $uploaded.digest -ne "sha256:$digest") {
+              throw "Uploaded asset verification failed: $name"
+            }
+          }
+          gh release edit $env:RELEASE_TAG --draft=false --latest
