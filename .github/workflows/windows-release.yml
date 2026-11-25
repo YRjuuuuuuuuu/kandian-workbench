@@ -57,7 +57,7 @@ jobs:
           $version = $env:RELEASE_TAG.Substring(1)
           $asset = "dist/kandian-workbench-$version-windows-x64"
           gh release upload $env:RELEASE_TAG "$asset.zip" "$asset.sha256" --clobber
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if ($LASTEXITCODE -ne 0) { Write-Warning 'Upload reported an error; verifying the stored assets before proceeding.' }
           $releases = gh api "repos/$env:GITHUB_REPOSITORY/releases?per_page=100" | ConvertFrom-Json
           $release = $releases | Where-Object { $_.tag_name -eq $env:RELEASE_TAG -and $_.draft }
           if (-not $release) { throw 'Draft release disappeared' }
