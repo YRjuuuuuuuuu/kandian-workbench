@@ -165,7 +165,7 @@ def main():
     parser.add_argument("--port", type=int, default=8768)
     args = parser.parse_args()
     staging = ROOT / "data" / ("v09-acceptance-" + dt.datetime.now().strftime("%Y%m%d-%H%M%S"))
-    staging.mkdir()
+    staging.mkdir(parents=True)
     with zipfile.ZipFile(args.archive) as bundle:
         assert not any({"data", "credentials", ".codex"} & set(Path(name).parts[1:2]) for name in bundle.namelist())
         bundle.extractall(staging)
