@@ -1,0 +1,35 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+      - name: Install Python dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Validate modes
+        run: python -m content_engine check-modes
+      - name: Run Python tests
+        run: python -m unittest discover -s tests -v
+      - name: Run frontend tests
+        run: node --test tests/editor_state.test.cjs tests/publishing_ui.test.cjs tests/stage_models_ui.test.cjs

@@ -1,0 +1,456 @@
+{
+  "avoid": [
+    "标题使用无法由正文事实支撑的夸张判断或绝对化预言",
+    "把某场单场表现直接推断为球员或球队的长期本质",
+    "用绰号、讽刺或情绪化标签替代对具体回合和数据的解释",
+    "对判罚、伤病或争议动作做动机推测，或把未确认消息写成定论",
+    "大段复述比赛流水账而缺少对转折点的选择和解释",
+    "替球队预判系列赛结果，或写作者本人的观赛情绪与亲历"
+  ],
+  "patterns": [
+    {
+      "rule": "标题直接点出比赛结果或最具决定性的单一节点（失误、换人、伤退、逆转），可用对举或悬念式短语强化冲突，但必须有正文事实兜底，不写无法兑现的夸张承诺。",
+      "sample_ids": [
+        "s1",
+        "s3",
+        "s4"
+      ],
+      "section": "title"
+    },
+    {
+      "rule": "多场并列的稿型可在标题中先列对象再给共性判断，让读者一眼看出这是横向观察而非单场快报。",
+      "sample_ids": [
+        "s2"
+      ],
+      "section": "title"
+    },
+    {
+      "rule": "首段用一句话交代时间、对阵、比分与系列赛或赛事处境，随后立刻给出本场最值得读的转折点，不铺垫背景再报结果。",
+      "sample_ids": [
+        "s1",
+        "s7"
+      ],
+      "section": "opening"
+    },
+    {
+      "rule": "以一句概括性判断或并列短句开场，把多场比赛的共同处境先立起来，再逐场展开，适合横向观察稿。",
+      "sample_ids": [
+        "s2",
+        "s3"
+      ],
+      "section": "opening"
+    },
+    {
+      "rule": "按比赛时间轴推进，重点展开改变走势的段落（某节净胜、连续得分高潮、关键换人、意外受伤），普通回合压缩处理。",
+      "sample_ids": [
+        "s1",
+        "s3",
+        "s7"
+      ],
+      "section": "body"
+    },
+    {
+      "rule": "关键球员用具体数据支撑评价，得分、篮板、助攻、失误、命中率要与该场胜负直接挂钩，避免只给形容词。",
+      "sample_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "section": "body"
+    },
+    {
+      "rule": "涉及判罚、伤病或争议动作时，交代可核实的事实与官方或当事方说法，区分已确认信息与推测，不替当事人下动机结论。",
+      "sample_ids": [
+        "s2",
+        "s3"
+      ],
+      "section": "body"
+    },
+    {
+      "rule": "写教练决策时按时间顺序拆解具体调整（换人、阵型变化、对位安排），并用随后发生的比赛进程检验这一调整的效果。",
+      "sample_ids": [
+        "s4",
+        "s6"
+      ],
+      "section": "body"
+    },
+    {
+      "rule": "用数据对比解释战术意图，例如控球率与射门数占优却输球时，指出机会质量、反击效率或防守针对性上的差异。",
+      "sample_ids": [
+        "s6"
+      ],
+      "section": "analysis"
+    },
+    {
+      "rule": "把单场表现放回系列赛或赛季背景中解读（历史翻盘概率、此前交锋、体能消耗），但不下超出证据的长期定性。",
+      "sample_ids": [
+        "s1",
+        "s2",
+        "s7"
+      ],
+      "section": "analysis"
+    },
+    {
+      "rule": "多场比赛可归入同一主题下比较，分别说明各自输赢的具体成因，不把不同性质的问题混为一句笼统结论。",
+      "sample_ids": [
+        "s2",
+        "s3"
+      ],
+      "section": "analysis"
+    },
+    {
+      "rule": "适度使用比喻、绰号或轻度调侃活跃行文，但每一次幽默都紧跟具体数据或回合，且不针对球员人格进行贬损。",
+      "sample_ids": [
+        "s2",
+        "s3"
+      ],
+      "section": "body"
+    },
+    {
+      "rule": "结尾回到本场或本系列赛的具体看点（下一场、待解问题、已确认的后续安排），不做空泛升华，也不替球队宣布出局或晋级。",
+      "sample_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "section": "ending"
+    },
+    {
+      "rule": "赛事综述型稿可在收尾补充赛事环境、球员表态等外围信息，但仍以已确认事实为准，不添加未证实的评价。",
+      "sample_ids": [
+        "s7"
+      ],
+      "section": "ending"
+    }
+  ],
+  "persona": "面向关注职业联赛与大赛的中文体育读者，用赛后结果和具体回合讲清比赛为什么这样走。写稿人先给可验证的比分、时间与关键节点，再用球员数据、战术安排和临场决策解释胜负来源；允许幽默和比喻，但都服务于分析，不替代事实。对球员和教练的评价落到该场表现与可核实的背景上，不用情绪化标签代替判断，也不替球队预判系列赛结局。",
+  "rubric": [
+    {
+      "check": "首段是否在两句内交代对阵、比分（或关键结果）与赛事处境，并点出本场核心转折？",
+      "name": "结果与时间前置"
+    },
+    {
+      "check": "对关键球员和教练的评价是否都有该场具体数据或回合支撑，没有只靠形容词的段落？",
+      "name": "数据挂钩评价"
+    },
+    {
+      "check": "是否只展开改变走势的段落并压缩普通回合，而非按分钟流水复述？",
+      "name": "转折点取舍"
+    },
+    {
+      "check": "写到换人、战术或判罚时，是否说明了随后发生的比赛进程如何验证这一判断？",
+      "name": "决策-结果闭环"
+    },
+    {
+      "check": "是否区分了已确认事实与推测，未对伤病、判罚做动机推断，也未用单场表现推断长期本质？",
+      "name": "边界与措辞"
+    },
+    {
+      "check": "结尾是否落在具体后续看点或待解问题上，没有空泛升华和替球队预判结局？",
+      "name": "收尾落地"
+    }
+  ],
+  "samples": [
+    {
+      "author": "刘艾林",
+      "features": {
+        "characters": 1086,
+        "median_paragraph": 140,
+        "numeric_tokens": 44,
+        "paragraphs": 9,
+        "questions": 0,
+        "subheads": 1
+      },
+      "genre": "赛果与进程",
+      "group": "basketball",
+      "id": "s1",
+      "read_method": "deepseek_official_search_content",
+      "sha256": "54410ebd64cf736d8ab292678f3837ce1c216eef1e81b54316ab305dd848fc72",
+      "split": "train",
+      "title": "NBA总决赛｜文班亚马致命失误， 马刺被逼入绝境 - 今日头条",
+      "url": "https://www.toutiao.com/article/7648133376397820456/"
+    },
+    {
+      "author": "未核实作者",
+      "features": {
+        "characters": 3498,
+        "median_paragraph": 39,
+        "numeric_tokens": 58,
+        "paragraphs": 74,
+        "questions": 4,
+        "subheads": 1
+      },
+      "genre": "多队观察",
+      "group": "basketball",
+      "id": "s2",
+      "read_method": "deepseek_official_search_content",
+      "sha256": "a134652d16b10aa018943b1345d5677912036c439a9284c2ccd28588c54643db",
+      "split": "train",
+      "title": "湖人、活塞、雄鹿、魔术，不同的命悬一线，相同的绝境求生 - 今日头条",
+      "url": "https://www.toutiao.com/article/7498326436621730341/"
+    },
+    {
+      "author": "未核实作者",
+      "features": {
+        "characters": 2958,
+        "median_paragraph": 38,
+        "numeric_tokens": 82,
+        "paragraphs": 64,
+        "questions": 6,
+        "subheads": 1
+      },
+      "genre": "人物表现与解释",
+      "group": "basketball",
+      "id": "s3",
+      "read_method": "deepseek_official_search_content",
+      "sha256": "601242c8a78e1754db2ce96df7da52fbe9049692557b45cfb513e090484e5985",
+      "split": "train",
+      "title": "破防的约老师，伤退的莫兰特，无奈的坎宁安，大家各有各的输法 - 今日头条",
+      "url": "https://www.toutiao.com/article/7497221953846002215/"
+    },
+    {
+      "author": "吴俊宽",
+      "features": {
+        "characters": 2043,
+        "median_paragraph": 68,
+        "numeric_tokens": 24,
+        "paragraphs": 25,
+        "questions": 2,
+        "subheads": 1
+      },
+      "genre": "战术复盘",
+      "group": "football",
+      "id": "s4",
+      "read_method": "deepseek_official_search_content",
+      "sha256": "74b8a09abcf000a871926f11b7ad28a87a654d03866530aaf80b263290879642",
+      "split": "train",
+      "title": "世界杯｜英阿之战，图赫尔的三大“败招” - 今日头条",
+      "url": "https://www.toutiao.com/article/7663384032872284682/"
+    },
+    {
+      "author": "尹成君",
+      "features": {
+        "characters": 938,
+        "median_paragraph": 105,
+        "numeric_tokens": 16,
+        "paragraphs": 10,
+        "questions": 1,
+        "subheads": 1
+      },
+      "genre": "球队分析",
+      "group": "football",
+      "id": "s5",
+      "read_method": "deepseek_official_search_content",
+      "sha256": "3a9be6d03ef8e43c21da31c3d1b99810e6cd98daaaea8e0cda2b56f8b72a57e3",
+      "split": "holdout",
+      "title": "西甲|不华丽，但足够致命！穆里尼奥让皇马重回争冠轨道 - 今日头条",
+      "url": "https://www.toutiao.com/article/7700784687626666550/"
+    },
+    {
+      "author": "陈均",
+      "features": {
+        "characters": 2421,
+        "median_paragraph": 145,
+        "numeric_tokens": 43,
+        "paragraphs": 17,
+        "questions": 1,
+        "subheads": 1
+      },
+      "genre": "战术管理",
+      "group": "football",
+      "id": "s6",
+      "read_method": "deepseek_official_search_content",
+      "sha256": "a8dd1e15dee73bb3f4f0a06023a9ae56b80351b9591f02f114cfdd1ff0ebec3f",
+      "split": "train",
+      "title": "头发白了的穆里尼奥，给巴萨上了一堂战术管理课 - 今日头条",
+      "url": "https://www.toutiao.com/article/7700859841144766995/"
+    },
+    {
+      "author": "姜山",
+      "features": {
+        "characters": 1834,
+        "median_paragraph": 165,
+        "numeric_tokens": 54,
+        "paragraphs": 12,
+        "questions": 0,
+        "subheads": 1
+      },
+      "genre": "比赛进程",
+      "group": "tennis",
+      "id": "s7",
+      "read_method": "deepseek_official_search_content",
+      "sha256": "3321d294f09d3696ed831347de4f530a9e679b7d316b604216ab6c7734572cf0",
+      "split": "train",
+      "title": "2026年成都公开赛-ATP250圆满落幕！弗基纳拿下单打冠军，圆梦蓉城 - 今日头条",
+      "url": "https://www.toutiao.com/article/7690988011718328878/"
+    },
+    {
+      "author": "陆玮鑫",
+      "features": {
+        "characters": 1488,
+        "median_paragraph": 130,
+        "numeric_tokens": 4,
+        "paragraphs": 12,
+        "questions": 2,
+        "subheads": 1
+      },
+      "genre": "规则与现象解释",
+      "group": "tennis",
+      "id": "s8",
+      "read_method": "deepseek_official_search_content",
+      "sha256": "30529f5815fd80cbe8550c25151d5b2773fc8f2293e0fe4b94ee9242688b449d",
+      "split": "holdout",
+      "title": "全运会的网球比赛，为何有这么多“碾压局”？",
+      "url": "https://www.toutiao.com/article/7573680119802233398/"
+    }
+  ],
+  "templates": [
+    {
+      "id": "result",
+      "outline": [
+        "首段：时间、对阵、比分与系列赛或赛事处境，点出决定胜负的单一节点",
+        "次段：交代双方赛前处境与背景，说明这场为何关键",
+        "按时间轴写进程，重点展开改变走势的节次或连续得分段",
+        "关键球员表现与数据，说明其与胜负的直接关系",
+        "结尾：下一场安排或本场留下的具体问题"
+      ]
+    },
+    {
+      "id": "analysis",
+      "outline": [
+        "首段：结果与核心判断，一句话给出本场胜负的主因",
+        "分点拆解战术或临场决策，每点配具体回合与数据",
+        "用数据对比解释双方机会质量与效率差异",
+        "把单场放回系列赛或赛季背景中解读，控制定性范围",
+        "结尾：回到可验证的后续看点"
+      ]
+    },
+    {
+      "id": "quote",
+      "outline": [
+        "首段：结果与当事方最关键的一句公开表态（须有可核实来源）",
+        "交代表态出现的语境与时间",
+        "结合比赛进程解释这句话指向的具体问题",
+        "用数据或回合检验表态与实际表现的对应关系",
+        "结尾：这一表态对后续的意味，限于已确认信息"
+      ]
+    },
+    {
+      "id": "rules",
+      "outline": [
+        "首段：用本场一个具体判罚或规则情形引出问题",
+        "说明相关规则的适用条件，避免只给结论",
+        "结合本场回合还原判罚过程与官方说法",
+        "指出争议点与实际影响的边界",
+        "结尾：该规则情形对后续比赛的现实意义"
+      ]
+    },
+    {
+      "id": "athlete",
+      "outline": [
+        "首段：该球员本场结果与最突出的数据或节点",
+        "按时间轴写其关键回合，区分高效段与低效段",
+        "用数据说明其表现对球队胜负的实际影响",
+        "交代可核实的背景（伤情、轮换、对位安排）",
+        "结尾：本场表现留下的具体待解问题"
+      ]
+    },
+    {
+      "id": "team",
+      "outline": [
+        "首段：球队本场结果与整体处境的概括判断",
+        "按节次或阶段写球队攻防走势与转折",
+        "用团队数据与关键球员数据解释成因",
+        "指出教练调整的效果与局限",
+        "结尾：球队下一步的具体看点，不做结果预判"
+      ]
+    }
+  ],
+  "validation": {
+    "evidence_rule_count": 14,
+    "holdout_count": 2,
+    "holdout_features": [
+      {
+        "characters": 938,
+        "median_paragraph": 105,
+        "numeric_tokens": 16,
+        "paragraphs": 10,
+        "questions": 1,
+        "subheads": 1
+      },
+      {
+        "characters": 1488,
+        "median_paragraph": 130,
+        "numeric_tokens": 4,
+        "paragraphs": 12,
+        "questions": 2,
+        "subheads": 1
+      }
+    ],
+    "limits": [
+      "留出正文未参与规则归纳；这里只检查结构分布与证据，不声称流量提升。"
+    ],
+    "multi_sample_rules": 11,
+    "passed": true,
+    "train_features": [
+      {
+        "characters": 1086,
+        "median_paragraph": 140,
+        "numeric_tokens": 44,
+        "paragraphs": 9,
+        "questions": 0,
+        "subheads": 1
+      },
+      {
+        "characters": 3498,
+        "median_paragraph": 39,
+        "numeric_tokens": 58,
+        "paragraphs": 74,
+        "questions": 4,
+        "subheads": 1
+      },
+      {
+        "characters": 2958,
+        "median_paragraph": 38,
+        "numeric_tokens": 82,
+        "paragraphs": 64,
+        "questions": 6,
+        "subheads": 1
+      },
+      {
+        "characters": 2043,
+        "median_paragraph": 68,
+        "numeric_tokens": 24,
+        "paragraphs": 25,
+        "questions": 2,
+        "subheads": 1
+      },
+      {
+        "characters": 2421,
+        "median_paragraph": 145,
+        "numeric_tokens": 43,
+        "paragraphs": 17,
+        "questions": 1,
+        "subheads": 1
+      },
+      {
+        "characters": 1834,
+        "median_paragraph": 165,
+        "numeric_tokens": 54,
+        "paragraphs": 12,
+        "questions": 0,
+        "subheads": 1
+      }
+    ],
+    "training_count": 6,
+    "verified_author_count": 6,
+    "forward_test": {
+      "facts_frozen": true,
+      "baseline_characters": 1501,
+      "first_learned_characters": 1334,
+      "longest_sample_overlap": 6,
+      "review_fix": "试写后强化分析段去重与统计因果边界；仍需人工选择采用。"
+    }
+  },
+  "version": 1
+}

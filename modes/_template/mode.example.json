@@ -1,0 +1,13 @@
+{
+  "id": "technology",
+  "name": "科技实测",
+  "version": 1,
+  "description": "这是新增模式的配置示例，复制到独立目录后启用",
+  "audience": "需要解决实际工具问题的读者",
+  "allowed_keywords": ["工具", "软件", "图片", "测试", "效率", "电脑"],
+  "blocked_keywords": ["虚假评测", "破解付费"],
+  "editorial_rules": ["没做过实验就不声称亲测", "区分官方功能与自己的判断"],
+  "slots": ["07:30", "12:10", "20:30"],
+  "scoring_weights": {"heat": 0.25, "rise": 0.2, "freshness": 0.2, "relevance": 0.2, "value": 0.15},
+  "templates": [{"id": "explainer", "name": "实测解释", "min_chars": 800, "max_chars": 1400, "ttl_hours": 168, "validators": [], "outline": ["实际问题", "有依据的过程", "结果与局限"]}]
+}

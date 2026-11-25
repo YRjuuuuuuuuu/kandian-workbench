@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="app-token" content="__APP_TOKEN__"><title>看点工场 · 编辑 Agent</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/agent.css"><link rel="stylesheet" href="/editor.css"></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="#overview"><span class="brand-mark">看</span><span>看点工场<small>CONTENT WORKBENCH</small></span></a>
+  <div class="workspace-label">你的创作空间</div>
+  <nav aria-label="主导航">
+    <button data-nav="overview" class="active"><span>◈</span>工作台</button>
+    <button data-nav="agent"><span>✦</span>Agent 运行记录</button>
+    <button data-nav="topics"><span>⌁</span>选题与素材</button>
+    <button data-nav="articles"><span>▤</span>稿件中心</button>
+
+
+    <div class="nav-divider"></div>
+    <button data-nav="settings"><span>◇</span>模式与账号</button>
+    <button data-nav="sources"><span>⇄</span>来源与 AI 任务</button>
+  </nav>
+  <div class="sidebar-footer"><span class="connection-dot"></span> 本地编辑 Agent<small>找题与生产交给 AI<br>选题与终审由你决定</small></div>
+</aside>
+<div class="layout">
+  <header class="topbar"><div id="breadcrumb">创作空间 <span>/</span> 工作台</div><div class="top-actions"><select id="account-filter" aria-label="筛选账号"><option value="">全部账号</option></select><span class="local-badge">本地运行</span><button class="button primary" data-act="agent-discover">✦ 让 Agent 找选题</button></div></header>
+  <main id="main" aria-live="polite"><div class="loading">正在连接你的工作台…</div></main>
+</div>
+<dialog id="modal"><div class="modal-head"><div><span id="modal-eyebrow" class="eyebrow">编辑 Agent · 人工终审</span><h2 id="modal-title"></h2></div><button class="icon-button" data-act="close" aria-label="关闭窗口">×</button></div><div id="modal-error" class="modal-error" role="alert" hidden></div><div id="modal-body"></div></dialog>
+<div id="toast" popover="manual" role="status" aria-live="polite"></div>
+<script src="/app.js"></script><script src="/models.js"></script><script src="/agent.js"></script><script src="/writer-skills.js"></script><script src="/publishing.js"></script><script src="/editor.js"></script>
+</body></html>
